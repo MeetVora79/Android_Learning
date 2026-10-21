@@ -20,6 +20,11 @@
             android:name=".Week_2_Task_1"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity
+            android:name=".Week_2_Task_2"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
