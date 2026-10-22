@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="200sp"
+        android:text="TEXT ANALYZER"
+        android:textSize="30sp"
+        android:textStyle="bold"
+       android:gravity="center"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:hint="Enter Text"
+        android:layout_marginBottom="8sp"
+        android:id="@+id/edtText"
+        android:inputType="text"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Analyze"
+        android:id="@+id/btnAnalyze"
+        android:layout_marginTop="8sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Result"
+        android:gravity="center"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:id="@+id/txtResult"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:visibility="invisible"/>
+</LinearLayout>
+
+
