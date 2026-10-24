@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#666666"
+    android:padding="21dp">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Cart Update"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_margin="21dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:background="#fff"
+        android:padding="11dp"
+        android:textSize="18dp"
+        android:id="@+id/edtProduct"
+        android:clickable="false"
+        android:layout_marginBottom="21dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Price"
+        android:background="#fff"
+        android:padding="11dp"
+        android:textColorHint="@color/black"
+        android:inputType="numberDecimal"
+        android:id="@+id/edtPrice"
+        android:layout_marginBottom="21dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:background="#fff"
+        android:padding="11dp"
+        android:inputType="number"
+        android:textColorHint="@color/black"
+        android:id="@+id/edtQuantity"
+        android:layout_marginBottom="21dp"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#fff"
+        android:text="Update"
+        android:textColor="#48494B"
+        android:layout_gravity="end"
+        android:id="@+id/btnCartUpdate"/>
+
+</LinearLayout>
