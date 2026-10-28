@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Android_Learning_Tasks</string>
+    <string name="app_name">Android Learning Tasks</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="city">City</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="title">REGISTRATION FORM</string>
+    <string name="submit">SUBMIT</string>
+    <string name="nameInput">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "</string>
+    <string name="terms">I agree to the terms and conditions.</string>
 </resources>
