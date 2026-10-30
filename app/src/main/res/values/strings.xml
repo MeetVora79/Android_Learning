@@ -11,4 +11,12 @@
     <string name="submit">SUBMIT</string>
     <string name="nameInput">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "</string>
     <string name="terms">I agree to the terms and conditions.</string>
+    <string name="dis_calculator">DISCOUNT CALCULATOR</string>
+    <string name="amount_rs">Amount (Rs.)</string>
+    <string name="dis_percent">Discount (%)</string>
+    <string name="calculate">Calculate</string>
+    <string name="reset">Reset</string>
+    <string name="discount_rs">Discount: Rs.</string>
+    <string name="txt_result">Result</string>
+    <string name="txt_error">Error</string>
 </resources>
