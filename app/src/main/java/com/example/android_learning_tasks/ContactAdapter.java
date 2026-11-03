@@ -16,10 +16,12 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     Context context;
     ArrayList<ContactModel> contactList;
+    ArrayList<ContactModel> filteredList;
 
     public ContactAdapter(Context context, ArrayList<ContactModel> contactList) {
         this.context = context;
         this.contactList = contactList;
+        this.filteredList = new ArrayList<>(contactList);
     }
 
     @NonNull
@@ -31,7 +33,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ContactAdapter.ViewHolder holder, int position) {
-        ContactModel contact = contactList.get(position);
+        ContactModel contact = filteredList.get(position);
         holder.tvName.setText(contact.getName());
         holder.tvPhone.setText(contact.getPhone());
         holder.ivContact.setImageResource(contact.getImage());
@@ -48,7 +50,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return contactList.size();
+        return filteredList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -61,5 +63,21 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             tvPhone = itemView.findViewById(R.id.tvPhone);
             ivContact = itemView.findViewById(R.id.ivContact);
         }
+    }
+
+    public void filter(String query){
+        filteredList.clear();
+        String q = query.trim().toLowerCase();
+
+        if(q.isEmpty()){
+            filteredList.addAll(contactList);
+        }else{
+            for(ContactModel c : contactList){
+                if(c.getName().toLowerCase().contains(q)){
+                    filteredList.add(c);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
