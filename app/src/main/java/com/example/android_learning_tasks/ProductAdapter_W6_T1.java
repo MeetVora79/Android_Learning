@@ -1,6 +1,8 @@
 package com.example.android_learning_tasks;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductAdapter_W6_T1 extends RecyclerView.Adapter<ProductAdapter_W6_T1.ViewHolder> {
     Context context;
@@ -34,6 +43,14 @@ public class ProductAdapter_W6_T1 extends RecyclerView.Adapter<ProductAdapter_W6
         Glide.with(holder.itemView.getContext())
                 .load(product.getThumbnail())
                 .into(holder.ivProducts);
+
+        holder.itemView.setOnClickListener(v -> {
+            int pos = holder.getBindingAdapterPosition();
+            if (pos == RecyclerView.NO_POSITION) return;
+            Intent intent = new Intent(context, ProductDetail.class);
+            intent.putExtra("id", products.get(pos).getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
