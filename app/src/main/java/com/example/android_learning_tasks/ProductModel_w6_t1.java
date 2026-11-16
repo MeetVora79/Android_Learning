@@ -13,6 +13,12 @@ public class ProductModel_w6_t1 {
 
     public ProductModel_w6_t1(){}
 
+    public ProductModel_w6_t1(String title, Double price, String category) {
+        this.title = title;
+        this.price = price;
+        this.category = category;
+    }
+
     public String getCategory() {
         return category;
     }
