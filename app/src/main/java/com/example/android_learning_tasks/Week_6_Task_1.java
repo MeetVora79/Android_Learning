@@ -1,6 +1,7 @@
 package com.example.android_learning_tasks;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class Week_6_Task_1 extends AppCompatActivity {
     Button btnRetry;
     List<ProductModel_w6_t1> products;
     ProductAdapter_W6_T1 adapter;
+    Button btnFav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,11 @@ public class Week_6_Task_1 extends AppCompatActivity {
         tvMessage = findViewById(R.id.tvMessage);
         btnRetry = findViewById(R.id.btnRetry);
         recyclerView = findViewById(R.id.rvProducts);
+        btnFav = findViewById(R.id.btnFav);
+
+        btnFav.setOnClickListener(v -> {
+            startActivity(new Intent(Week_6_Task_1.this, ProductsFavorite.class));
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

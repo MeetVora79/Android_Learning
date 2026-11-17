@@ -15,8 +15,9 @@
 
         <ImageView
             android:id="@+id/ivProducts"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:contentDescription="product image"
             android:src="@drawable/ic_launcher_background"/>
 
         <LinearLayout
@@ -41,7 +42,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:layout_marginBottom="11dp"
                 android:text="Price"/>
+
+            <ImageButton
+                android:id="@+id/ibFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/outline_favorite_24"/>
 
         </LinearLayout>
 

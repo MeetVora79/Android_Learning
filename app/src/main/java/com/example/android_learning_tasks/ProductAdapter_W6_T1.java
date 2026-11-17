@@ -6,8 +6,11 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -44,12 +47,35 @@ public class ProductAdapter_W6_T1 extends RecyclerView.Adapter<ProductAdapter_W6
                 .load(product.getThumbnail())
                 .into(holder.ivProducts);
 
+        ProductModel_w6_t1 savedProduct = ProductDatabase.getInstance(context).productDao().getProductById(product.getId());
+        if (savedProduct != null) {
+            holder.ibFav.setImageResource(R.drawable.baseline_favorite_24);
+        } else {
+            holder.ibFav.setImageResource(R.drawable.outline_favorite_24);
+        }
+
         holder.itemView.setOnClickListener(v -> {
             int pos = holder.getBindingAdapterPosition();
             if (pos == RecyclerView.NO_POSITION) return;
             Intent intent = new Intent(context, ProductDetail.class);
             intent.putExtra("id", products.get(pos).getId());
             context.startActivity(intent);
+        });
+
+        holder.ibFav.setOnClickListener(v -> {
+            int pos = holder.getBindingAdapterPosition();
+            if (pos == RecyclerView.NO_POSITION) return;
+            ProductModel_w6_t1 p = products.get(pos);
+            ProductModel_w6_t1 existing = ProductDatabase.getInstance(context).productDao().getProductById(p.getId());
+            if (existing == null) {
+                ProductDatabase.getInstance(context).productDao().insert(p);
+                holder.ibFav.setImageResource(R.drawable.baseline_favorite_24);
+                android.widget.Toast.makeText(context, "Added to Favorites", android.widget.Toast.LENGTH_SHORT).show();
+            } else {
+                ProductDatabase.getInstance(context).productDao().delete(existing);
+                holder.ibFav.setImageResource(R.drawable.outline_favorite_24);
+                android.widget.Toast.makeText(context, "Removed from Favorites", android.widget.Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -61,11 +87,13 @@ public class ProductAdapter_W6_T1 extends RecyclerView.Adapter<ProductAdapter_W6
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivProducts;
         TextView ivTitle, ivPrice;
+        ImageButton ibFav;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProducts = itemView.findViewById(R.id.ivProducts);
             ivTitle = itemView.findViewById(R.id.tvTitle);
             ivPrice = itemView.findViewById(R.id.tvPrice);
+            ibFav = itemView.findViewById(R.id.ibFav);
         }
     }
 }

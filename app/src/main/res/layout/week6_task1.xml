@@ -7,11 +7,20 @@
     android:layout_margin="8dp"
     tools:context=".Week_6_Task_1">
 
+    <Button
+        android:id="@+id/btnFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorite"
+        android:layout_margin="11dp"
+        android:layout_alignParentEnd="true"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:layout_below="@+id/btnFav"/>
 
     <ProgressBar
         android:id="@+id/pbLoading"
