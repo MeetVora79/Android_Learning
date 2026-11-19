@@ -14,6 +14,10 @@ public interface ProductApiService {
     @GET("products/{id}")
     Call<ProductModel_w6_t1> getProductDetail(@Path("id") int id);
 
+    @GET("products")
+    Call<ProductResponse>
+    getPaginatedProducts(@Query("limit") int limit, @Query("skip") int skip);
+
     @GET("products/search")
     Call<ProductResponse> searchProducts(@Query("q") String query);
 
