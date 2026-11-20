@@ -18,7 +18,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Week_9_Task_1 extends AppCompatActivity {
-
     static final int LIMIT = 10;
     int SKIP = 0;
     RecyclerView recyclerView;
