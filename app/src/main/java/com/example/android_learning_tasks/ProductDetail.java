@@ -2,9 +2,12 @@ package com.example.android_learning_tasks;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import retrofit2.Call;
@@ -21,7 +24,9 @@ public class ProductDetail extends AppCompatActivity {
     ImageView ivImage;
     TextView tvTitle, tvPrice, tvCategory, tvDescription, tvMessage;
     LinearLayout llMain;
+    ImageButton ibFavDetail;
     int productId;
+    ProductModel_w6_t1 currentProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +41,23 @@ public class ProductDetail extends AppCompatActivity {
         tvDescription = findViewById(R.id.tvDescription);
         tvMessage = findViewById(R.id.tvMessage);
         llMain = findViewById(R.id.llMain);
+        ibFavDetail = findViewById(R.id.ibFavDetail);
 
         productId = getIntent().getIntExtra("id", -1);
+
+        ibFavDetail.setOnClickListener(v -> {
+            if (currentProduct == null) return;
+            ProductDao dao = ProductDatabase.getInstance(this).productDao();
+            ProductModel_w6_t1 existing = dao.getProductById(currentProduct.getId());
+            if (existing == null) {
+                dao.insert(currentProduct);
+                Toast.makeText(this, "Added to Favorites", Toast.LENGTH_SHORT).show();
+            } else {
+                dao.delete(existing);
+                Toast.makeText(this, "Removed from Favorites", Toast.LENGTH_SHORT).show();
+            }
+            updateFavIcon();
+        });
 
         loadDetail();
     }
@@ -76,6 +96,8 @@ public class ProductDetail extends AppCompatActivity {
     }
 
     private void showDetail(ProductModel_w6_t1 p) {
+        currentProduct = p;
+        updateFavIcon();
         llMain.setVisibility(View.VISIBLE);
         tvMessage.setVisibility(View.GONE);
         tvTitle.setText(p.getTitle());
@@ -89,6 +111,16 @@ public class ProductDetail extends AppCompatActivity {
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .error(R.drawable.ic_launcher_foreground)
                     .into(ivImage);
+        }
+    }
+
+    private void updateFavIcon() {
+        if (currentProduct == null) return;
+        ProductModel_w6_t1 saved = ProductDatabase.getInstance(this).productDao().getProductById(currentProduct.getId());
+        if (saved != null) {
+            ibFavDetail.setImageResource(R.drawable.baseline_favorite_24);
+        } else {
+            ibFavDetail.setImageResource(R.drawable.outline_favorite_24);
         }
     }
 
